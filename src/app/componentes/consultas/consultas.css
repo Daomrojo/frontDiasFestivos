@@ -1,0 +1,42 @@
+.tarjeta {
+  margin-bottom: 24px;
+}
+
+.formulario {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.botones {
+  padding-bottom: 20px;
+}
+
+.alerta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin-top: 8px;
+  font-size: 1rem;
+}
+
+.es-festivo {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #a5d6a7;
+}
+
+.no-festivo {
+  background-color: #fff3e0;
+  color: #e65100;
+  border: 1px solid #ffcc80;
+}
+
+.tabla-completa {
+  width: 100%;
+  margin-top: 12px;
+}

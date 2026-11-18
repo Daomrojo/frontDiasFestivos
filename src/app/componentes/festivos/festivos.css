@@ -1,0 +1,33 @@
+.tarjeta {
+  margin-bottom: 24px;
+}
+
+.formulario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+.span-full {
+  grid-column: 1 / -1;
+}
+
+.botones {
+  display: flex;
+  gap: 8px;
+}
+
+.tabla-completa {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.col-acciones {
+  width: 120px;
+  text-align: right;
+}

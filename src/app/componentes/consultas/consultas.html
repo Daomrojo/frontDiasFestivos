@@ -1,0 +1,93 @@
+<!-- SECCIÓN 1: VERIFICAR SI UNA FECHA ES FESTIVA -->
+<mat-card class="tarjeta">
+  <mat-card-header>
+    <mat-card-title>Verificar Fecha Específica</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form (ngSubmit)="verificarFecha()" class="formulario">
+      <mat-form-field appearance="outline">
+        <mat-label>País</mat-label>
+        <mat-select [(ngModel)]="idPaisVerificar" name="idPaisVerificar" required>
+          @for (pais of paises; track pais.id) {
+            <mat-option [value]="pais.id">{{ pais.nombre }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha a verificar</mat-label>
+        <input matInput type="date" [(ngModel)]="fechaSeleccionada" name="fechaSeleccionada" required />
+      </mat-form-field>
+
+      <div class="botones">
+        <button mat-raised-button color="primary" type="submit">
+          <mat-icon>event_available</mat-icon> Verificar
+        </button>
+      </div>
+    </form>
+
+    @if (resultadoVerificacion !== null) {
+      <div class="alerta" [class.es-festivo]="resultadoVerificacion" [class.no-festivo]="!resultadoVerificacion">
+        <mat-icon>{{ resultadoVerificacion ? 'celebration' : 'work' }}</mat-icon>
+        <span>
+          La fecha <strong>{{ textoFechaConsultada }}</strong>
+          <strong>{{ resultadoVerificacion ? 'SÍ es día festivo' : 'NO es día festivo (día laboral)' }}</strong>.
+        </span>
+      </div>
+    }
+  </mat-card-content>
+</mat-card>
+
+<!-- SECCIÓN 2: OBTENER TODOS LOS FESTIVOS DE UN AÑO -->
+<mat-card class="tarjeta">
+  <mat-card-header>
+    <mat-card-title>Festivos por País y Año</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form (ngSubmit)="consultarPorAnio()" class="formulario">
+      <mat-form-field appearance="outline">
+        <mat-label>País</mat-label>
+        <mat-select [(ngModel)]="idPaisAnio" name="idPaisAnio" required>
+          @for (pais of paises; track pais.id) {
+            <mat-option [value]="pais.id">{{ pais.nombre }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Año</mat-label>
+        <input matInput type="number" min="1900" max="2100" [(ngModel)]="anioConsulta" name="anioConsulta" required />
+      </mat-form-field>
+
+      <div class="botones">
+        <button mat-raised-button color="accent" type="submit">
+          <mat-icon>search</mat-icon> Consultar Año
+        </button>
+      </div>
+    </form>
+
+    @if (consultaAnioRealizada) {
+      <table mat-table [dataSource]="festivosDelAnio" class="tabla-completa">
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Festivo</th>
+          <td mat-cell *matCellDef="let f">{{ f.nombre }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="fecha">
+          <th mat-header-cell *matHeaderCellDef>Día / Mes</th>
+          <td mat-cell *matCellDef="let f">{{ f.dia }} / {{ f.mes }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="tipo">
+          <th mat-header-cell *matHeaderCellDef>Tipo</th>
+          <td mat-cell *matCellDef="let f">{{ f.tipoFestivo?.tipo || f.idTipo }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+      </table>
+    }
+  </mat-card-content>
+</mat-card>

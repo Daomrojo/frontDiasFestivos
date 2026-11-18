@@ -1,0 +1,32 @@
+.tarjeta {
+  margin-bottom: 24px;
+}
+
+.formulario {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.campo-nombre {
+  flex: 1;
+  min-width: 250px;
+}
+
+.botones {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 20px;
+}
+
+.tabla-completa {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.col-acciones {
+  width: 120px;
+  text-align: right;
+}

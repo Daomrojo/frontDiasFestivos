@@ -1,0 +1,31 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.espaciador {
+  flex: 1 1 auto;
+}
+
+.menu a {
+  margin-left: 8px;
+}
+
+.activo {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+.contenedor-principal {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
